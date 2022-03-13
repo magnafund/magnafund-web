@@ -11,8 +11,10 @@ import {CardModule} from 'primeng/card';
 import {ButtonModule} from 'primeng/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ToastModule} from 'primeng/toast';
+import { AuthService } from './services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
+import { InputTextModule } from 'primeng/inputtext';
 
-export const authRoutes: Route[] = [];
 
 @NgModule({
   imports: [
@@ -23,7 +25,11 @@ export const authRoutes: Route[] = [];
     ButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    ToastModule
+    ToastModule,
+    HttpClientModule,
+    InputTextModule
+
+
 
 
   ],
@@ -37,7 +43,11 @@ export const authRoutes: Route[] = [];
     LoginComponent,
     SignUpComponent,
     ResetPasswordComponent,
-    ContainerComponent
+    ContainerComponent,
+
+
+
   ],
+  providers: [AuthService]
 })
 export class AuthModule {}
