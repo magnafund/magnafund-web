@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@crowdfunding/auth": ["libs/auth/src/index.ts"]
+      "@crowdfunding/auth": ["libs/auth/src/index.ts"],
+      "@crowdfunding/core": ["libs/core/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

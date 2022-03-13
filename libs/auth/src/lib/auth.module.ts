@@ -5,11 +5,38 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ContainerComponent } from './pages/container/container.component';
+import { AuthRoutingModule } from './auth-routing.module';
 
-export const authRoutes: Route[] = [];
+import {CardModule} from 'primeng/card';
+import {ButtonModule} from 'primeng/button';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {ToastModule} from 'primeng/toast';
+import { AuthService } from './services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
+import { InputTextModule } from 'primeng/inputtext';
+import {DialogModule} from 'primeng/dialog';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+};
 
 @NgModule({
-  imports: [CommonModule, RouterModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    AuthRoutingModule,
+    CardModule,
+    ButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ToastModule,
+    HttpClientModule,
+    InputTextModule,
+    DialogModule,
+    NgxMaskModule.forRoot(maskConfig)
+  ],
+
   declarations: [
     LoginComponent,
     SignUpComponent,
@@ -20,7 +47,11 @@ export const authRoutes: Route[] = [];
     LoginComponent,
     SignUpComponent,
     ResetPasswordComponent,
-    ContainerComponent
+    ContainerComponent,
+
+
+
   ],
+  providers: [AuthService]
 })
 export class AuthModule {}

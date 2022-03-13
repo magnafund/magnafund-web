@@ -1,1 +1,62 @@
-<p>sign-up works!</p>
+<p-toast></p-toast>
+<div class="signup-page">
+  <p-card>
+    <h3 class="text-center">signUp</h3>
+    <form [formGroup]="signupForm">
+      <div class="formgrid grid p-fluid">
+
+        <div class="field col-12">
+            <label for="name">Beneficiary Name</label>
+            <input id="name" type="text" pInputText class="inputfield w-full p-2" formControlName="beneficiaryName">
+        </div>
+        <div class="field col-12">
+            <label for="email">Email</label>
+            <input id="email" type="email" pInputText class="inputfield w-full p-2" formControlName="email">
+        </div>
+        <div class="field col-12">
+            <label for="phoneNumber">Phone Number</label>
+            <input id="phoneNumber" type="text" pInputText class="inputfield w-full p-2" formControlName="phoneNumber">
+        </div>
+        <div class="field col-12">
+            <label for="password">Password</label>
+            <input id="password" type="password" pInputText class="inputfield w-full p-2" formControlName="password">
+        </div>
+
+        <small class="text-center my-3 ml-2" >Already have an account ?  Login <a routerLink="/auth/login" class="login-link">here</a></small>
+
+        <div class="col-12">
+          <button pButton type="button" (click)="signUp()" label="Sign Up" ></button>
+        </div>
+
+      </div>
+    </form>
+  </p-card>
+
+  <p-dialog header="OTP" [(visible)]="displayResponsive" [breakpoints]="{'960px': '75vw'}" [style]="{width: '50vw'}"
+  [draggable]="false" [resizable]="false">
+  <p>Enter the One Time Password sent to <strong>{{userEmail}}</strong></p>
+
+  <form [formGroup]="otpForm">
+    <div class="field col-12">
+      <label for="otp">OTP</label>
+      <input id="otp" type="text"
+       pInputText class="inputfield w-full p-2"
+        formControlName="otp" placeholder="XXXXXX"
+        maxlength="6"
+        >
+  </div>
+
+  </form>
+      <ng-template pTemplate="footer">
+      <p-button (click)="displayResponsive=false" label="Cancel" styleClass="p-button-text p-button-danger"></p-button>
+      <p-button (click)="resendOTP()" label="Re-send OTP" styleClass="p-button-text p-button-info"></p-button>
+      <p-button (click)="sendOTP()" label="Send OTP" styleClass=""></p-button>
+      </ng-template>
+</p-dialog>
+
+
+
+</div>
+
+
+
