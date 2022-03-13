@@ -18,7 +18,9 @@
           "apps/front-web/src/favicon.ico",
           "apps/front-web/src/assets"
         ],
-        "styles": ["apps/front-web/src/styles.scss"],
+        "styles": [
+          "apps/front-web/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {

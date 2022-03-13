@@ -1,23 +1,24 @@
-<div class="login-page">
+<p-toast></p-toast>
+<div class="signup-page">
   <p-card>
-    <h3>signUp</h3>
+    <h3 class=""text-center>signUp</h3>
     <form [formGroup]="signupForm">
       <div class="formgrid grid p-fluid">
         <div class="field col-12">
             <label for="name">Beneficiary Name</label>
-            <input id="name" type="text" pInputText class="inputfield w-full" formControlName="beneficiaryName">
+            <input id="name" type="text" pInputText class="inputfield w-full p-2" formControlName="beneficiaryName">
         </div>
         <div class="field col-12">
             <label for="email">Email</label>
-            <input id="email" type="email" pInputText class="inputfield w-full" formControlName="email">
+            <input id="email" type="email" pInputText class="inputfield w-full p-2" formControlName="email">
         </div>
         <div class="field col-12">
             <label for="phoneNumber">Phone Number</label>
-            <input id="phoneNumber" type="text" pInputText class="inputfield w-full" formControlName="phoneNumber">
+            <input id="phoneNumber" type="text" pInputText class="inputfield w-full p-2" formControlName="phoneNumber">
         </div>
         <div class="field col-12">
             <label for="password">Password</label>
-            <input id="password" type="password" pInputText class="inputfield w-full" formControlName="password">
+            <input id="password" type="password" pInputText class="inputfield w-full p-2" formControlName="password">
         </div>
 
         <div class="col-12">

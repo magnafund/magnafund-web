@@ -10,6 +10,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import {CardModule} from 'primeng/card';
 import {ButtonModule} from 'primeng/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {ToastModule} from 'primeng/toast';
 
 export const authRoutes: Route[] = [];
 
@@ -21,7 +22,8 @@ export const authRoutes: Route[] = [];
     CardModule,
     ButtonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastModule
 
 
   ],
