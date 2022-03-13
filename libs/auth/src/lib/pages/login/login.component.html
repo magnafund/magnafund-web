@@ -1,1 +1,26 @@
-<p>login works!</p>
+<div class="login-page">
+  <p-card>
+    <h3>Login</h3>
+    <form [formGroup]="loginForm">
+      <div class="formgrid grid p-fluid">
+
+      <div class="col-12 field">
+          <div class="p-inputgroup">
+              <span class="p-inputgroup-addon"><i class="pi pi-envelope"></i></span>
+              <input type="email" formControlName="email" pInputText placeholder="Email" class="inputfield w-full" >
+          </div>
+      </div>
+      <div class="col-12 field">
+          <div class="p-inputgroup">
+              <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+              <input type="Password" formControlName="password" pInputText placeholder="Password" class="inputfield w-full" >
+          </div>
+      </div>
+
+      <div class="col-12">
+        <button pButton type="button" (click)="logIn()" label="Log In" ></button>
+      </div>
+      </div>
+    </form>
+  </p-card>
+</div>
