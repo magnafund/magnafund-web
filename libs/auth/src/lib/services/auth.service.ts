@@ -20,6 +20,10 @@ export class AuthService {
     return this.http.post<any>(`${this.baseUrl}/Account/login`, loginDetails)
   }
 
+  verifyAccount(verificationDetails :any) : Observable<any>{
+    return this.http.post<any>(`${this.baseUrl}/Account/confirm-account`, verificationDetails)
+  }
+
 }
 
 

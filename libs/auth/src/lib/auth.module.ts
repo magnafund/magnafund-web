@@ -14,7 +14,12 @@ import {ToastModule} from 'primeng/toast';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { InputTextModule } from 'primeng/inputtext';
+import {DialogModule} from 'primeng/dialog';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
 
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+};
 
 @NgModule({
   imports: [
@@ -27,12 +32,11 @@ import { InputTextModule } from 'primeng/inputtext';
     ReactiveFormsModule,
     ToastModule,
     HttpClientModule,
-    InputTextModule
-
-
-
-
+    InputTextModule,
+    DialogModule,
+    NgxMaskModule.forRoot(maskConfig)
   ],
+
   declarations: [
     LoginComponent,
     SignUpComponent,
