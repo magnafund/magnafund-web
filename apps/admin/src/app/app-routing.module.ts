@@ -6,12 +6,7 @@ const routes : Routes = [
     path : 'auth',
     loadChildren: () => import('@crowdfunding/auth').then((a) => a.AuthModule)
   },
-  {
-    path : '',
-    children : [
-
-    ]
-  }
+  { path: '**', redirectTo: 'auth' }
 ]
 
 @NgModule({

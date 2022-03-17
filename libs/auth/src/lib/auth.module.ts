@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { InputTextModule } from 'primeng/inputtext';
 import {DialogModule} from 'primeng/dialog';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -34,7 +35,8 @@ const maskConfig: Partial<IConfig> = {
     HttpClientModule,
     InputTextModule,
     DialogModule,
-    NgxMaskModule.forRoot(maskConfig)
+    NgxMaskModule.forRoot(maskConfig),
+    ProgressSpinnerModule
   ],
 
   declarations: [
