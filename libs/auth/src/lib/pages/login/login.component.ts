@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
     this.messageService.add({severity:'success', summary:'Success', detail:'Login successful'})
     }, (error: any) => {
       this.uiLoader.stop();
-      this.messageService.add({severity:'error', summary:'Login failed', detail:`An error occurred try again later`})
+      this.messageService.add({severity:'error', summary:'Login failed', detail:`${error.error.messages.map((err:any)=> err)}`})
     })
   }
 

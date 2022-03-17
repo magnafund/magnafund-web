@@ -63,7 +63,7 @@ export class SignUpComponent implements OnInit {
     }, (error) => {
       this.uiLoader.stop();
       // this.messageService.add({severity:'error', summary:'Error', detail:`${error.messages.map((error: string) => error)}`})
-      this.messageService.add({severity:'error', summary:'Error', detail:`Error occured`})
+      this.messageService.add({severity:'error', summary:'Error', detail:`${error.error.messages.map((err: string) => err)}`})
     })
   }
 
