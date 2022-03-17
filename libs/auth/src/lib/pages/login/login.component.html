@@ -1,7 +1,8 @@
 <p-toast></p-toast>
+<!-- <p-progressSpinner class="loader" *ngIf="loading_spinner"></p-progressSpinner> -->
 <div class="login-page">
   <p-card>
-    <h3 class="text-center">Login</h3>
+    <h3 class="text-center my-3">Login</h3>
     <form [formGroup]="loginForm">
       <div class="formgrid grid p-fluid">
 
@@ -18,11 +19,12 @@
           </div>
       </div>
 
-      <small class="text-center my-3 ml-2" >Do not have an account ?  Sign Up <a routerLink="/auth/sign-up" class="login-link">here</a></small>
+      <small class="text-center my-2 ml-2" >Do not have an account ?  Sign Up <a routerLink="/auth/sign-up" class="login-link">here</a></small>
 
       <div class="col-12">
         <button pButton type="button" (click)="logIn()" label="Log In" ></button>
       </div>
+      <small class="text-center my-2 ml-2" >Forgot password ?  Reset password <a routerLink="/auth/reset-password" class="login-link">here</a></small>
       </div>
     </form>
 

@@ -7,12 +7,16 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 import { MessageService } from 'primeng/api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
+
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+
+
   ],
   providers: [MessageService],
   bootstrap: [AppComponent],

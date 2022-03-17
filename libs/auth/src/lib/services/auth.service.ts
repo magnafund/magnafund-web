@@ -24,6 +24,13 @@ export class AuthService {
     return this.http.post<any>(`${this.baseUrl}/Account/confirm-account`, verificationDetails)
   }
 
+  verifyResetCode(verificationDetails :any) : Observable<any>{
+    return this.http.post<any>(`${this.baseUrl}/Account/reset-password`, verificationDetails)
+  }
+  resetPassword(email:string) : Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}/Account/reset-password/verification-code/${email}`)
+  }
+
 }
 
 
