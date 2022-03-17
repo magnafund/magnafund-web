@@ -17,6 +17,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import {DialogModule} from 'primeng/dialog';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -43,13 +44,15 @@ const maskConfig: Partial<IConfig> = {
     LoginComponent,
     SignUpComponent,
     ResetPasswordComponent,
-    ContainerComponent
+    ContainerComponent,
+    ChangePasswordComponent
   ],
   exports: [
     LoginComponent,
     SignUpComponent,
     ResetPasswordComponent,
     ContainerComponent,
+    ChangePasswordComponent,
 
 
 

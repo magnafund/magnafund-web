@@ -24,6 +24,7 @@ export class ResetPasswordComponent implements OnInit {
     })
     this.verificationCodeForm = this.formBuilder.group({
       code : ['', Validators.required],
+      newPassword : ['', Validators.required],
     })
   }
 
@@ -42,6 +43,25 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   verifyCode(){
-    console.log(this.verificationCodeForm.value)
+    if (this.resetForm.invalid){
+      this.messageService.add({severity:'error', summary:'Error', detail:'Fill in your email to continue'})
+      return;
+    }
+    const verificationDetails = {
+      userEmail: this.resetForm.value.email,
+      verificationCode: this.verificationCodeForm.value.code,
+      newPassword: this.verificationCodeForm.value.newPassword
+
+    }
+
+    this.authService.verifyResetCode(verificationDetails).subscribe((res) => {
+      if(res.success){
+        this.messageService.add({severity:'success', summary:'Success', detail:`${res.messages[0]}`})
+      } else {
+        this.messageService.add({severity:'success', summary:'Success', detail:`${res.messages[0]}`})
+      }
+    }, (error) => {
+      this.messageService.add({severity:'error', summary:'Error', detail:`${error.error.messages.map((err:string) => err)}`})
+    })
   }
 }
