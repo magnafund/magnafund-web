@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { MessageService } from 'primeng/api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule
 
 
   ],
