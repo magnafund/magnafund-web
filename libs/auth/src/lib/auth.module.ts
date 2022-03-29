@@ -11,8 +11,6 @@ import {CardModule} from 'primeng/card';
 import {ButtonModule} from 'primeng/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ToastModule} from 'primeng/toast';
-import { AuthService } from './services/auth.service';
-import { HttpClientModule } from '@angular/common/http';
 import { InputTextModule } from 'primeng/inputtext';
 import {DialogModule} from 'primeng/dialog';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
@@ -33,7 +31,6 @@ const maskConfig: Partial<IConfig> = {
     FormsModule,
     ReactiveFormsModule,
     ToastModule,
-    HttpClientModule,
     InputTextModule,
     DialogModule,
     NgxMaskModule.forRoot(maskConfig),
@@ -53,10 +50,6 @@ const maskConfig: Partial<IConfig> = {
     ResetPasswordComponent,
     ContainerComponent,
     ChangePasswordComponent,
-
-
-
   ],
-  providers: [AuthService]
 })
 export class AuthModule {}

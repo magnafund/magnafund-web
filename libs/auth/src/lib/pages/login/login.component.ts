@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { MessageService } from 'primeng/api';
-import { AuthService } from '../../services/auth.service';
+import { AuthService, TokenService } from '@crowdfunding/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'crowdfunding-login',
@@ -19,6 +20,8 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
      private messageService: MessageService,
      private uiLoader: NgxUiLoaderService,
+    private router: Router,
+    private tokenService: TokenService
      ) { }
 
   ngOnInit(): void {
@@ -39,6 +42,8 @@ export class LoginComponent implements OnInit {
         this.messageService.add({severity:'error', summary:'Error', detail:`${res.messages[0]}`})
       }
     this.messageService.add({severity:'success', summary:'Success', detail:'Login successful'})
+    this.router.navigateByUrl('/');
+    this.tokenService.setToken(res?.data?.token)
     }, (error: any) => {
       this.uiLoader.stop();
       this.messageService.add({severity:'error', summary:'Login failed', detail:`${error.error.messages.map((err:any)=> err)}`})

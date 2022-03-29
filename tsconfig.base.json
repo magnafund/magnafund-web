@@ -16,7 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "@crowdfunding/auth": ["libs/auth/src/index.ts"],
-      "@crowdfunding/core": ["libs/core/src/index.ts"]
+      "@crowdfunding/core": ["libs/core/src/index.ts"],
+      "@crowdfunding/layouts": ["libs/layouts/src/index.ts"],
+      "@env/*": ["environments/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
