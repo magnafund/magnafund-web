@@ -16,6 +16,7 @@ import {DialogModule} from 'primeng/dialog';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
+import { AuthService, TokenService } from '@crowdfunding/core';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -51,5 +52,6 @@ const maskConfig: Partial<IConfig> = {
     ContainerComponent,
     ChangePasswordComponent,
   ],
+  providers: [AuthService, TokenService]
 })
 export class AuthModule {}

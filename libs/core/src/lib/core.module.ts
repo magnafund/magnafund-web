@@ -7,7 +7,7 @@ import {
   POSITION,
   SPINNER,
 } from 'ngx-ui-loader';
-import { AuthService } from './services';
+import { AuthService, TokenService } from './services';
 
 const uiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: '#ffffff',
@@ -33,6 +33,6 @@ const uiLoaderConfig: NgxUiLoaderConfig = {
     NgxUiLoaderModule.forRoot(uiLoaderConfig),
   ],
   exports:[NgxUiLoaderModule],
-  providers: [AuthService]
+  providers: [AuthService, TokenService]
 })
 export class CoreModule {}
