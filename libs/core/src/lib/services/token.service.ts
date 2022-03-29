@@ -8,11 +8,11 @@ export class TokenService {
   constructor() { }
 
   public setToken(token: string): void {
-    localStorage.setItem('access_token', token);
+    localStorage.setItem('cf_token', token);
   }
 
   public getToken(): string | null {
-    return localStorage.getItem('access_token');
+    return localStorage.getItem('cf_token');
   }
 
   public clearToken() {

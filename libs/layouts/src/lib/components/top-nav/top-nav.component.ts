@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenService } from '@crowdfunding/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'crowdfunding-top-nav',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopNavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tokenService : TokenService, private router : Router) { }
 
   ngOnInit(): void {
+  }
+
+  logout(){
+    this.tokenService.clearToken();
+    this.router.navigateByUrl('/auth/login')
   }
 
 }

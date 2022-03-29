@@ -11,7 +11,7 @@ import { Beneficiary } from '../models';
 
 
 export class AuthService {
-  baseUrl = `https://cf-usermanagement-api.herokuapp.com/api/v1`
+  
 
   constructor(private http: HttpClient) { }
 
