@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AuthGuard } from "@crowdfunding/core";
 import { ContainerComponent } from "@crowdfunding/layouts";
+import { DashboardComponent, DonationsAddDashboardComponent, DonationsListDashboardComponent } from "@crowdfunding/ui";
 
 const routes : Routes = [
   {
@@ -12,6 +13,20 @@ const routes : Routes = [
     path: '',
     component: ContainerComponent,
     canActivate: [AuthGuard],
+    children: [
+      {
+        path:'',
+        component: DashboardComponent
+      },
+      {
+        path:'donations',
+        component: DonationsListDashboardComponent
+      },
+      {
+        path:'donations/form',
+        component: DonationsAddDashboardComponent
+      },
+    ]
   },
   { path: '**', redirectTo: 'auth' }
 ]

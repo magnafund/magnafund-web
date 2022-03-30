@@ -4,10 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NxWelcomeComponent } from './nx-welcome.component';
-import { MessageService } from 'primeng/api';
+import { MessageService, ConfirmationService } from 'primeng/api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService, TokenService } from '@crowdfunding/core';
+
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import { AuthService, TokenService } from '@crowdfunding/core';
 
 
   ],
-  providers: [MessageService, TokenService, AuthService],
+  providers: [MessageService, TokenService, AuthService, ConfirmationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
