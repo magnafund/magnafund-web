@@ -1,0 +1,21 @@
+.banner-wrapper{
+    background: linear-gradient(to right, rgba(8, 174, 234, 0.651) 0%, rgba(42, 245, 154, 0.651) 100%), url('/assets/banner-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+    h1{
+        font-size: 4rem;
+    }
+
+    p{
+        font-size: 1.3rem;
+    }
+}
+

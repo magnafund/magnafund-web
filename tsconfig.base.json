@@ -17,7 +17,9 @@
     "paths": {
       "@crowdfunding/auth": ["libs/auth/src/index.ts"],
       "@crowdfunding/core": ["libs/core/src/index.ts"],
+      "@crowdfunding/donations": ["libs/donations/src/index.ts"],
       "@crowdfunding/layouts": ["libs/layouts/src/index.ts"],
+      "@crowdfunding/ui": ["libs/ui/src/index.ts"],
       "@env/*": ["environments/*"]
     }
   },

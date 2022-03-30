@@ -4,8 +4,8 @@ import { HomePageComponent } from "./pages/home-page/home-page.component";
 
 const routes: Routes = [
     {
-        path : 'auth',
-        loadChildren: () => import('@crowdfunding/auth').then((a) => a.AuthModule)
+        path : 'donations',
+        loadChildren: () => import('@crowdfunding/donations').then((a) => a.DonationsModule)
     },
     {
         path: '',

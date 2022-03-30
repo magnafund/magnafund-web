@@ -1,0 +1,9 @@
+<div class="donations-list">
+    <div class="p-col-12">
+        <p-toolbar>
+            <div class="p-field-checkbox" *ngFor="let category of categories" class="m-3">
+                <p-checkbox [(ngModel)]="category.checked" [binary]="true"  (onChange)="categoryFilter()"></p-checkbox>
+                <label for="{{ category.id }}">{{ category.name }}</label>
+              </div>
+        </p-toolbar>
+</div>

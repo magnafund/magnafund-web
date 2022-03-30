@@ -7,6 +7,7 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 import { MessageService } from 'primeng/api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService, TokenService } from '@crowdfunding/core';
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 
   ],
-  providers: [MessageService],
+  providers: [MessageService, TokenService, AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
