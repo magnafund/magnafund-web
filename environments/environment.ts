@@ -16,5 +16,5 @@ export const environment = {
 // import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
 export enum ApplicationApis{
   UserManagement = 'https://cf-usermanagement-api.herokuapp.com/api/v1',
-  Donations = 'http://cf-donations-api.herokuapp.com/api/v1',
+  Donations = 'https://cf-donations-api.herokuapp.com/api/v1',
 }

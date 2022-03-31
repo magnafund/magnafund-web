@@ -10,15 +10,30 @@ import { RouterModule, Routes } from '@angular/router';
 import { ToolbarModule } from 'primeng/toolbar';
 import {CheckboxModule} from 'primeng/checkbox';
 import { FormsModule } from '@angular/forms';
+import { ChipModule } from 'primeng/chip';
 
 const routes :Routes = [
   {
     path: '',
     component: DonationsListComponent
+  },
+  {
+    path: ':id',
+    component: DonationsListComponent
   }
 ]
 @NgModule({
-  imports: [CommonModule, CardModule, ButtonModule, ProgressBarModule, RouterModule.forChild(routes), ToolbarModule, CheckboxModule, FormsModule],
+  imports: [
+    CommonModule, 
+    CardModule, 
+    ButtonModule, 
+    ProgressBarModule, 
+    RouterModule.forChild(routes), 
+    ToolbarModule, 
+    CheckboxModule, 
+    FormsModule,
+    ChipModule
+  ],
   declarations: [
     TopDonationsComponent,
     CategoriesComponent,

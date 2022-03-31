@@ -1,1 +1,6 @@
-<p>categories works!</p>
+<div class="categories pt-5">
+    <h2 class="text-center mb-5">Browse by category</h2>
+    <div class="flex align-items-center justify-content-center">
+        <p-chip (click)="navigateToCategory(category.id)" *ngFor="let category of categories" [label]="category.categoryName" styleClass="mr-3"></p-chip>
+    <div>
+</div>

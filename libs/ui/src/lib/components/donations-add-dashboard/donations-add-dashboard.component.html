@@ -44,10 +44,21 @@
               <label for="endDate">End Date </label><br />
               <p-calendar formControlName="endDate"></p-calendar>
             </div>
+            <div class="field col-6">
+              <label for="category">category</label><br />
+              <p-dropdown
+                [options]="categories"
+                formControlName="category"
+                optionLabel="categoryName"
+                optionValue="id"
+                [filter]="true"
+                filterBy="categoryName"
+                [showClear]="true"
+                placeholder="Select a Category"
+              ></p-dropdown>            
+            </div>
           </div>
-
           
-
           
           
           <div class="p-fluid formgrid grid">

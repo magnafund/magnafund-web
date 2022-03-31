@@ -6,19 +6,22 @@ import { TopNavComponent } from './components/top-nav/top-nav.component';
 import { RouterModule } from '@angular/router';
 import {ButtonModule} from 'primeng/button';
 import { AuthService, TokenService } from '@crowdfunding/core';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, ButtonModule],
   declarations: [
     ContainerComponent,
     SideMenuComponent,
-    TopNavComponent
+    TopNavComponent,
+    FooterComponent
   ],
   exports: [
     SideMenuComponent,
     TopNavComponent,
     ContainerComponent,
-    RouterModule
+    RouterModule,
+    FooterComponent
   ],
   providers: [AuthService, TokenService]
 })

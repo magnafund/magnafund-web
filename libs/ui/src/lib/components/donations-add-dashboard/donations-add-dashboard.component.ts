@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DonationsService } from '@crowdfunding/donations';
+import { Category, DonationsService } from '@crowdfunding/donations';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { TokenService } from '@crowdfunding/core';
 import { ActivatedRoute } from '@angular/router';
@@ -14,6 +14,7 @@ export class DonationsAddDashboardComponent implements OnInit {
   editmode = false;
   isSubmitted = false;
   donationsForm! : FormGroup;
+  categories!:Category[];
   constructor(
     private formBuilder : FormBuilder, 
     private donationService: DonationsService, 
@@ -25,6 +26,7 @@ export class DonationsAddDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.initialiseForm();
     this.checkEdit()
+    this.getCategories()
     
   }
 
@@ -44,6 +46,7 @@ export class DonationsAddDashboardComponent implements OnInit {
       description: ['', Validators.required],
       amountGoal: ['', Validators.required],
       endDate: ['', Validators.required],
+      category: ['', Validators.required],
       userId: [0]
     })
   }
@@ -54,6 +57,12 @@ export class DonationsAddDashboardComponent implements OnInit {
     const donation = {userId, ...this.donationsForm.value}
     this.donationService.postDonation(donation).subscribe((res) => {
       console.log(res)
+    })
+  }
+
+  getCategories(){
+    this.donationService.getAllCategories().subscribe((res : any) => {
+      this.categories = res.data;
     })
   }
 

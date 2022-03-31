@@ -20,6 +20,7 @@ import {CalendarModule} from 'primeng/calendar';
 import {TooltipModule} from 'primeng/tooltip';
 import { TagModule } from 'primeng/tag';
 import {DropdownModule} from 'primeng/dropdown';
+import {ChartModule} from 'primeng/chart';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import {DropdownModule} from 'primeng/dropdown';
     CalendarModule,
     TooltipModule,
     TagModule,
-    DropdownModule
+    DropdownModule,
+    ChartModule
   ], 
   declarations: [
     BannerComponent,

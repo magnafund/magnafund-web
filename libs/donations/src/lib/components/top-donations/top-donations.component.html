@@ -5,12 +5,16 @@
             <ng-template pTemplate="header">
                 <img alt="Card" src="assets/banner-bg.jpg">
             </ng-template>
-            <p>{{donation?.description}}</p>
-            <p-progressBar [value]="donation.progress"></p-progressBar>
-            <!-- <ng-template pTemplate="footer">
-                <p-button label="Save" icon="pi pi-check"></p-button>
-                <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
-            </ng-template> -->
+            <div [innerHTML]="donation.description"></div>
+            <div>
+                <p-progressBar [value]="donation.progress"></p-progressBar>
+                <div class="p-2 m2-3">
+                    Raised <strong>{{donation.amountRaised | currency : 'ZWL '}}</strong> of <strong style="color: green;">{{donation.amountGoal | currency : 'ZWL '}}</strong>
+
+                </div>
+
+            </div>
+           
         </p-card>
     </div>
 </div>
