@@ -1,7 +1,7 @@
 <div class="top-donations-wrapper container">
     <h3 class="text-center mt-5">Top Fundraisers</h3>
-    <div class="top-donations grid" *ngIf="donations">
-        <p-card *ngFor="let donation of donations" [header]="donation?.title" [subheader]="donation.datePosted" [style]="{width: '360px'}" styleClass="p-card-shadow col-12 md:col-4">
+    <div class="top-donations row" *ngIf="donations">
+        <p-card *ngFor="let donation of donations" [header]="donation?.title" class="col-md-4" [subheader]="donation.datePosted" [style]="{width: '360px'}" styleClass="p-card-shadow">
             <ng-template pTemplate="header">
                 <img alt="Card" src="assets/banner-bg.jpg">
             </ng-template>

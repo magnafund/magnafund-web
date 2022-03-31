@@ -21,6 +21,7 @@ import {TooltipModule} from 'primeng/tooltip';
 import { TagModule } from 'primeng/tag';
 import {DropdownModule} from 'primeng/dropdown';
 import {ChartModule} from 'primeng/chart';
+import { QtaSectionComponent } from './components/qta-section/qta-section.component';
 
 
 @NgModule({
@@ -48,13 +49,15 @@ import {ChartModule} from 'primeng/chart';
     BannerComponent,
     DashboardComponent,
     DonationsListDashboardComponent,
-    DonationsAddDashboardComponent
+    DonationsAddDashboardComponent,
+    QtaSectionComponent
   ],
   exports: [
     BannerComponent,
     DashboardComponent,
     DonationsListDashboardComponent,
-    DonationsAddDashboardComponent
+    DonationsAddDashboardComponent,
+    QtaSectionComponent
   ],
   providers:[ConfirmationService]
 })
