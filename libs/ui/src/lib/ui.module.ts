@@ -12,7 +12,14 @@ import {CardModule} from 'primeng/card';
 import {ToolbarModule} from 'primeng/toolbar';
 import {TableModule} from 'primeng/table';
 import { RouterModule } from '@angular/router';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {EditorModule} from 'primeng/editor'
+import {InputNumberModule} from 'primeng/inputnumber';
+import {InputTextModule} from 'primeng/inputtext';
+import {CalendarModule} from 'primeng/calendar';
+import {TooltipModule} from 'primeng/tooltip';
+import { TagModule } from 'primeng/tag';
+import {DropdownModule} from 'primeng/dropdown';
 
 
 @NgModule({
@@ -24,7 +31,16 @@ import { RouterModule } from '@angular/router';
     CardModule,
     ToolbarModule,
     TableModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    EditorModule,
+    InputNumberModule,
+    InputTextModule,
+    CalendarModule,
+    TooltipModule,
+    TagModule,
+    DropdownModule
   ], 
   declarations: [
     BannerComponent,

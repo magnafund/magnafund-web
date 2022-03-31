@@ -6,10 +6,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService, TokenService } from '@crowdfunding/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { JWT_OPTIONS, JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 
+import { httpInterceptor } from '@crowdfunding/core';
 
+export function jwtOptionsFactory(tokenService: TokenService) {
+  return {
+    tokenGetter: () => {
+      return tokenService.getToken();
+    },
+    skipWhenExpired: true,
+    whitelistedDomains: [],
+  };
+}
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
@@ -17,11 +29,26 @@ import { AuthService, TokenService } from '@crowdfunding/core';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    JwtModule.forRoot({
+      jwtOptionsProvider: {
+        provide: JWT_OPTIONS,
+        useFactory: jwtOptionsFactory,
+        deps: [TokenService],
+      },
+    }),
 
 
   ],
-  providers: [MessageService, TokenService, AuthService, ConfirmationService],
+  providers: [
+    MessageService, 
+    TokenService, 
+    AuthService, 
+    ConfirmationService,
+    { provide: HTTP_INTERCEPTORS, useClass: httpInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

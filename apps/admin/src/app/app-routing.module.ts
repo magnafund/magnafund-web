@@ -26,6 +26,10 @@ const routes : Routes = [
         path:'donations/form',
         component: DonationsAddDashboardComponent
       },
+      {
+        path:'donations/form/:id',
+        component: DonationsAddDashboardComponent
+      },
     ]
   },
   { path: '**', redirectTo: 'auth' }

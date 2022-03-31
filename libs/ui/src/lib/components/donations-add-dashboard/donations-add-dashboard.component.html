@@ -1,1 +1,65 @@
-<p>donations-add-dashboard works!</p>
+<p-toast></p-toast>
+<div class="admin-page">
+  <p-card
+    [header]="editmode ? 'Edit Fundraiser' : 'Add Fundraiser'"
+    subheader="You can add or edit your fundraisers here"
+  >
+    <div class="p-grid mb-5">
+      <div class="p-col-12">
+        <p-toolbar>
+          <div class="p-toolbar-group-left"></div>
+          <div class="p-toolbar-group-right">
+            <p-button
+              styleClass="p-button-primary mr-2"
+              [label]="editmode ? 'Update' : 'Create'"
+              icon="pi pi-plus"
+              (click)="createDonation()"
+            ></p-button>
+            <p-button
+              styleClass="p-button-secondary"
+              label="Cancel"
+              icon="pi pi-arrow-circle-left"
+            
+            ></p-button>
+          </div>
+        </p-toolbar>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="col-12">
+        <form [formGroup]="donationsForm">
+          <div class="p-fluid p-formgrid grid">
+            <div class="field col-6">
+              <label for="title">Title</label>
+              <input formControlName="title" id="title" type="text" pInputText />
+            </div>
+            
+            <div class="field col-6">
+              <label for="amountGoal">Goal (Amount) </label><br />
+              <p-inputNumber formControlName="amountGoal" mode="decimal" [useGrouping]="false">
+              </p-inputNumber>
+            </div>
+          
+            <div class="field col-6">
+              <label for="endDate">End Date </label><br />
+              <p-calendar formControlName="endDate"></p-calendar>
+            </div>
+          </div>
+
+          
+
+          
+          
+          <div class="p-fluid formgrid grid">
+                       
+            <div class="field col-12">
+              <label for="Description">Description</label><br />
+              <p-editor formControlName="description" [style]="{ height: '320px' }"></p-editor>
+            </div>
+            
+          </div>
+        </form>
+      </div>
+    </div>
+  </p-card>
+</div>

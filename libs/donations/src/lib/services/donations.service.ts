@@ -14,4 +14,18 @@ export class DonationsService {
   getAllDonations(): Observable<Donation[]>{
     return this.http.get<Donation[]>(`${ApplicationApis.Donations}/Donations/get-all-donations`)
   }
+
+  getDonationsByUserId(userid: number) : Observable<Donation[]>{
+    return this.http.get<Donation[]>(`${ApplicationApis.Donations}/Donations/get-by-userId/${userid}`)
+  }
+
+  getDonationsById(id: number) : Observable<Donation[]>{
+    return this.http.get<Donation[]>(`${ApplicationApis.Donations}/Donations/get-by-id/${id}`)
+  }
+
+  postDonation(donation : Donation){
+    return this.http.post<any>(`${ApplicationApis.Donations}/Donations`, donation)
+  }
+
+  
 }

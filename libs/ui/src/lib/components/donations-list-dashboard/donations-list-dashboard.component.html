@@ -33,16 +33,22 @@
               <td>{{donation.amountGoal | currency : 'ZWL '}}</td>
               <td>{{donation.dateCreated | date : 'short'}}</td>
               <td>
-                {{donation.status}}
+                <p-tag
+                  [value]="ORDER_STATUS[donation.status - 1].label"
+                  [severity]="ORDER_STATUS[donation.status - 1].color"
+                ></p-tag>
               </td>
               <td>
                 <p-button
-                  styleClass="p-button-danger p-mr-2"
-                  icon="pi pi-trash"
+                  styleClass="p-button-danger mr-2"
+                  icon="pi pi-ban"
+                  pTooltip="Close" tooltipPosition="top"
                 ></p-button>
                 <p-button
                   styleClass="p-button-success"
                   icon="pi pi-pencil"
+                  pTooltip="Edit" tooltipPosition="top"
+                  (click)="updateDonation(donation.id)"
                 ></p-button>
               </td>
             </tr>
