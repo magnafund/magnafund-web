@@ -9,8 +9,11 @@ import { DonationsListComponent } from './pages/donations-list/donations-list.co
 import { RouterModule, Routes } from '@angular/router';
 import { ToolbarModule } from 'primeng/toolbar';
 import {CheckboxModule} from 'primeng/checkbox';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChipModule } from 'primeng/chip';
+import { DonationDetailsComponent } from './pages/donation-details/donation-details.component';
+import { ContributeComponent } from './pages/contribute/contribute.component';
+import { InputTextModule } from 'primeng/inputtext';
 
 const routes :Routes = [
   {
@@ -18,8 +21,29 @@ const routes :Routes = [
     component: DonationsListComponent
   },
   {
-    path: ':id',
+    path: ':categoryId',
     component: DonationsListComponent
+  },
+  {
+    path: "donation-detail",
+    children: [
+      {
+        path: ":id",
+        component: DonationDetailsComponent
+      }
+    ]
+    
+  
+  },
+  {
+        path: "contribute",
+    children: [
+      {
+        path: ":id",
+        component: ContributeComponent
+      }
+    ]
+    
   }
 ]
 @NgModule({
@@ -32,17 +56,25 @@ const routes :Routes = [
     ToolbarModule, 
     CheckboxModule, 
     FormsModule,
-    ChipModule
+    ChipModule,
+    FormsModule,
+    ReactiveFormsModule,
+    InputTextModule,
+
   ],
   declarations: [
     TopDonationsComponent,
     CategoriesComponent,
-    DonationsListComponent
+    DonationsListComponent,
+    DonationDetailsComponent,
+    ContributeComponent
   ],
   exports: [
     TopDonationsComponent,
     CategoriesComponent,
-    DonationsListComponent
+    DonationsListComponent,
+    DonationDetailsComponent,
+    ContributeComponent
   ],
 })
 export class DonationsModule {}

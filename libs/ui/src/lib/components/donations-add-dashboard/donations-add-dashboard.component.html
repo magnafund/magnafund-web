@@ -13,7 +13,7 @@
               styleClass="p-button-primary mr-2"
               [label]="editmode ? 'Update' : 'Create'"
               icon="pi pi-plus"
-              (click)="createDonation()"
+              (click)="onSubmit()"
             ></p-button>
             <p-button
               styleClass="p-button-secondary"
@@ -27,7 +27,7 @@
     </div>
     <div class="grid">
       <div class="col-12">
-        <form [formGroup]="donationsForm">
+        <form [formGroup]="form">
           <div class="p-fluid p-formgrid grid">
             <div class="field col-6">
               <label for="title">Title</label>
@@ -48,7 +48,7 @@
               <label for="category">category</label><br />
               <p-dropdown
                 [options]="categories"
-                formControlName="category"
+                formControlName="categoryId"
                 optionLabel="categoryName"
                 optionValue="id"
                 [filter]="true"
@@ -57,7 +57,21 @@
                 placeholder="Select a Category"
               ></p-dropdown>            
             </div>
+            <div class="field col-12">
+              <label for="description">Short Description</label><br />
+              <textarea
+                pInputTextarea
+                formControlName="shortDescription"
+                [rows]="3"
+                [cols]="30"
+                maxlength="180"
+              ></textarea>
+              
+            </div>
+
+
           </div>
+
           
           
           

@@ -22,7 +22,7 @@ import { TagModule } from 'primeng/tag';
 import {DropdownModule} from 'primeng/dropdown';
 import {ChartModule} from 'primeng/chart';
 import { QtaSectionComponent } from './components/qta-section/qta-section.component';
-
+import {InputTextareaModule} from 'primeng/inputtextarea';
 
 @NgModule({
   imports: [
@@ -43,7 +43,8 @@ import { QtaSectionComponent } from './components/qta-section/qta-section.compon
     TooltipModule,
     TagModule,
     DropdownModule,
-    ChartModule
+    ChartModule,
+    InputTextareaModule
   ], 
   declarations: [
     BannerComponent,

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Donation } from '../../models/donation';
 import { DonationsService } from '../../services/donations.service';
 import * as moment from 'moment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'crowdfunding-top-donations',
@@ -10,7 +11,7 @@ import * as moment from 'moment';
 })
 export class TopDonationsComponent implements OnInit {
 
-  constructor(private donationService: DonationsService) { }
+  constructor(private donationService: DonationsService, private router : Router) { }
   donations!: any[];
 
   ngOnInit(): void {
@@ -18,7 +19,7 @@ export class TopDonationsComponent implements OnInit {
   }
 
   getDonations() {
-    this.donationService.getAllDonations().subscribe((res: any) => {
+    this.donationService.getTopDonations().subscribe((res: any) => {
       // this.donations = res.data
       console.log(this.donations)
       this.donations = res.data.map((donation: any) => {
@@ -33,6 +34,10 @@ export class TopDonationsComponent implements OnInit {
 
       console.log(this.donations)
     })
+  }
+
+  navigateToDetailPage(id: any){
+    this.router.navigateByUrl(`donations/donation-detail/${id}`)
   }
 
 }

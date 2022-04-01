@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Category, DonationsService } from '@crowdfunding/donations';
+import { Category, Donation, DonationsService } from '@crowdfunding/donations';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { TokenService } from '@crowdfunding/core';
 import { ActivatedRoute } from '@angular/router';
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'crowdfunding-donations-add-dashboard',
@@ -13,8 +15,10 @@ import { ActivatedRoute } from '@angular/router';
 export class DonationsAddDashboardComponent implements OnInit {
   editmode = false;
   isSubmitted = false;
-  donationsForm! : FormGroup;
+  form! : FormGroup;
+  userId!: any;
   categories!:Category[];
+  currentDonation!: Donation;
   constructor(
     private formBuilder : FormBuilder, 
     private donationService: DonationsService, 
@@ -22,39 +26,47 @@ export class DonationsAddDashboardComponent implements OnInit {
     private tokenService : TokenService,
     private activatedRoute : ActivatedRoute
     ) { }
-
-  ngOnInit(): void {
-    this.initialiseForm();
+    
+    ngOnInit(): void {      
+      const token : any = this.tokenService.getToken()
+      this.userId = parseInt(this.jwtHelperService.decodeToken(token).UserId)
+      
+      this.initialiseForm();
     this.checkEdit()
     this.getCategories()
-    
   }
-
+  
   checkEdit(){
     (this.activatedRoute.snapshot.params['id']) ? this.editmode = true : this.editmode = false
-
+    
     if(this.editmode){
-      this.donationService.getDonationsById(this.activatedRoute.snapshot.params['id']).subscribe((donation)=> {
-        console.log(donation)
+      this.donationService.getDonationsById(this.activatedRoute.snapshot.params['id']).subscribe((res: any)=> {
+        this.currentDonation = res.data        
+        console.log(this.currentDonation)
+        this.donationsForm['title'].setValue(this.currentDonation.title)
+        this.donationsForm['amountGoal'].setValue(this.currentDonation.amountGoal)
+        this.donationsForm['endDate'].setValue(this.currentDonation.endDate)
+        this.donationsForm['description'].setValue(this.currentDonation.description)
+        this.donationsForm['categoryId'].setValue(this.currentDonation?.categoryId)
       })
+      
     }
   }
 
   initialiseForm(){
-    this.donationsForm = this.formBuilder.group({
+    this.form = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
       amountGoal: ['', Validators.required],
       endDate: ['', Validators.required],
-      category: ['', Validators.required],
+      categoryId: ['', Validators.required],
+      shortDescription: ['', Validators.required],
       userId: [0]
     })
   }
 
   createDonation(){
-    const token : any = this.tokenService.getToken()
-    const userId = parseInt(this.jwtHelperService.decodeToken(token).UserId)
-    const donation = {userId, ...this.donationsForm.value}
+    const donation = {userId : this.userId, ...this.form.value}
     this.donationService.postDonation(donation).subscribe((res) => {
       console.log(res)
     })
@@ -64,6 +76,27 @@ export class DonationsAddDashboardComponent implements OnInit {
     this.donationService.getAllCategories().subscribe((res : any) => {
       this.categories = res.data;
     })
+  }
+
+  get donationsForm() {
+    return this.form.controls;
+  }
+
+  editDonation(){
+    const donation = {...this.form.value}
+    donation.userId = this.userId;
+    donation.id = this.activatedRoute.snapshot.params['id'];
+    console.log(donation)
+    console.log(this.userId)
+    this.donationService.updateDonation(donation).subscribe((res:any) => {
+
+    })
+  }
+
+  onSubmit(){
+    if(this.editmode)
+      this.editDonation()
+    this.createDonation()
   }
 
 }

@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/apps/admin",
+    "public": "dist/apps/front-web/",
     "ignore": [
       "firebase.json",
       "**/.*",

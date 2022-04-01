@@ -11,6 +11,7 @@ import { DonationsService } from '@crowdfunding/donations';
 })
 export class DonationsListDashboardComponent implements OnInit {
   donations : any[] = []
+  userId! : number
   ORDER_STATUS = [
     {
       label: 'Active',
@@ -34,6 +35,8 @@ export class DonationsListDashboardComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    const token : any = this.tokenService.getToken()
+    this.userId = parseInt(this.jwtHelperService.decodeToken(token).UserId)
     this.getDonations()
   }
 
@@ -42,10 +45,10 @@ export class DonationsListDashboardComponent implements OnInit {
   }
 
   getDonations(){
-    const token : any = this.tokenService.getToken()
-    const userId = parseInt(this.jwtHelperService.decodeToken(token).UserId)
-    this.donationsService.getDonationsByUserId(userId).subscribe((res:any) => {
+    
+    this.donationsService.getDonationsByUserId(this.userId).subscribe((res:any) => {
       this.donations = res.data
+      console.log(res.data)
     })
   }
 

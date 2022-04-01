@@ -1,0 +1,19 @@
+.nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    ul{
+           list-style: none;
+           li {
+            display: inline;
+            margin-right: 20px;
+            color: #666;
+
+            &:hover{
+                cursor: pointer;
+            }
+           }
+    }
+
+}

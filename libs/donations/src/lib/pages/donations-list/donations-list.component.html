@@ -1,9 +1,35 @@
-<div class="donations-list">
-    <div class="p-col-12">
-        <p-toolbar>
+<div class="donations-list px-4 row">
+    <div class="col-md-2 mt-5" *ngIf="!isCategoryPage">    
+        <h6>Filter By Category</h6>
             <div class="p-field-checkbox" *ngFor="let category of categories" class="m-3">
                 <p-checkbox [(ngModel)]="category.checked" [binary]="true"  (onChange)="categoryFilter()"></p-checkbox>
-                <label for="{{ category.id }}">{{ category.name }}</label>
+                <label for="{{ category.id }}"> {{ category.categoryName }}</label>
               </div>
-        </p-toolbar>
+    </div>
+    <div [ngClass]="{'col-md-10': !isCategoryPage, 'col-12': isCategoryPage}">
+        <h1 *ngIf="!isCategoryPage" class="display-4 text-center my-5 p-5">All fundraisings</h1>
+        <h1 *ngIf="isCategoryPage" class="display-4 text-center my-5 p-5">Browsing fundraisings by category <strong *ngIf="category"> <em>"{{category?.categoryName}}"</em></strong></h1>
+
+        <div class="top-donations row" *ngIf="donations">
+            <div *ngFor="let donation of donations" class="col-sm-12 col-md-6 col-lg-4">
+    
+                <p-card  [header]="donation?.title"  [subheader]="donation.datePosted" [style]="{width: '100%'}" styleClass="p-card-shadow mt-2">
+                    <ng-template pTemplate="header">
+                        <img alt="Card" src="assets/banner-bg.jpg">
+                    </ng-template>
+                    <div [innerHTML]="donation.shortDescription"></div>
+                    <div>
+                        <p-progressBar [value]="donation.progress"></p-progressBar>
+                        <div class="p-2 m2-3">
+                            Raised <strong>{{donation.amountRaised | currency : 'ZWL '}}</strong> of <strong style="color: green;">{{donation.amountGoal | currency : 'ZWL '}}</strong>
+        
+                        </div>
+        
+                    </div>
+                   
+                </p-card>
+            </div>
+        </div>
+        
+    </div>
 </div>

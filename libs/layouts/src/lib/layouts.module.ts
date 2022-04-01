@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import {ButtonModule} from 'primeng/button';
 import { AuthService, TokenService } from '@crowdfunding/core';
 import { FooterComponent } from './components/footer/footer.component';
+import { NavHeaderComponent } from './components/nav-header/nav-header.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, ButtonModule],
@@ -14,14 +15,16 @@ import { FooterComponent } from './components/footer/footer.component';
     ContainerComponent,
     SideMenuComponent,
     TopNavComponent,
-    FooterComponent
+    FooterComponent,
+    NavHeaderComponent
   ],
   exports: [
     SideMenuComponent,
     TopNavComponent,
     ContainerComponent,
     RouterModule,
-    FooterComponent
+    FooterComponent,
+    NavHeaderComponent
   ],
   providers: [AuthService, TokenService]
 })

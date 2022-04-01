@@ -1,20 +1,23 @@
-<div class="top-donations-wrapper container">
+<div class="top-donations-wrapper container py-5">
     <h3 class="text-center mt-5">Top Fundraisers</h3>
     <div class="top-donations row" *ngIf="donations">
-        <p-card *ngFor="let donation of donations" [header]="donation?.title" class="col-md-4" [subheader]="donation.datePosted" [style]="{width: '360px'}" styleClass="p-card-shadow">
-            <ng-template pTemplate="header">
-                <img alt="Card" src="assets/banner-bg.jpg">
-            </ng-template>
-            <div [innerHTML]="donation.description"></div>
-            <div>
-                <p-progressBar [value]="donation.progress"></p-progressBar>
-                <div class="p-2 m2-3">
-                    Raised <strong>{{donation.amountRaised | currency : 'ZWL '}}</strong> of <strong style="color: green;">{{donation.amountGoal | currency : 'ZWL '}}</strong>
+        <div *ngFor="let donation of donations" class="col-md-6 col-lg-4" (click)="navigateToDetailPage(donation.id)">
 
+            <p-card  [header]="donation?.title"  [subheader]="donation.datePosted" [style]="{width: '100%'}" styleClass="p-card-shadow mt-2">
+                <ng-template pTemplate="header">
+                    <img alt="Card" src="assets/banner-bg.jpg">
+                </ng-template>
+                <div [innerHTML]="donation.shortDescription"></div>
+                <div>
+                    <p-progressBar [value]="donation.progress"></p-progressBar>
+                    <div class="p-2 m2-3">
+                        Raised <strong>{{donation.amountRaised | currency : 'ZWL '}}</strong> of <strong style="color: green;">{{donation.amountGoal | currency : 'ZWL '}}</strong>
+    
+                    </div>
+    
                 </div>
-
-            </div>
-           
-        </p-card>
+               
+            </p-card>
+        </div>
     </div>
 </div>

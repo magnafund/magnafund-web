@@ -1,0 +1,43 @@
+<div class="donation-details" *ngIf="donation">
+    <div class="container">
+        <h1 class="display-4 my-5">{{donation.title}}</h1>
+        <div class="d-flex justify-content-between">
+            <p>Posted <strong>{{donation.datePosted}}</strong> </p>
+            <p>Closes <strong>{{donation.endDate | date : 'short'}}</strong> </p>
+        </div>
+                <!-- <img alt="Card" src="assets/banner-bg.jpg" style="max-height: 300px;"> -->
+                <!-- "id": 0,
+                "userId": 0,
+                "categoryId": 0,
+                "title": "string",
+                "shortDescription": "string",
+                "description": "string",
+                "amountRaised": 0,
+                "amountGoal": 0,
+                "dateCreated": "2022-04-01T00:06:51.678Z",
+                "endDate": "2022-04-01T00:06:51.678Z",
+                "status": 1,
+                "imageUrl": "string" -->
+            
+                <div>
+                <p-progressBar [value]="donation.progress"></p-progressBar>
+                <div class="p-2 m2-3">
+                    Raised <strong>{{donation.amountRaised | currency : 'ZWL '}}</strong> of <strong style="color: green;">{{donation.amountGoal | currency : 'ZWL '}}</strong>
+    
+                </div>
+
+                <p>{{donation.shortDescription}}</p>
+
+            <div [innerHTML]="donation.description">
+
+            </div>
+
+            <p-button label="Make a contribution" (click)="contribute()"></p-button>
+    
+            </div>
+
+    </div>
+       
+
+</div>
+  
