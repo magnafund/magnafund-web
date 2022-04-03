@@ -1,0 +1,15 @@
+.category-filter  {
+    display: flex!important;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    .image-placeholder{
+        height: 225px;
+        background-color: #ccc;
+    }
+    img{
+        height: 225px;
+    }
+}

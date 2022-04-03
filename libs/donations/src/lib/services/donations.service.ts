@@ -42,8 +42,14 @@ export class DonationsService {
   postDonation(donation : Donation){
     return this.http.post<any>(`${ApplicationApis.Donations}/Donations`, donation)
   }
+  makePayment(donation : any){
+    return this.http.post<any>(`https://cf-donations-api.herokuapp.com/api/Payment/process-payment`, donation)
+  }
   updateDonation(donation : Donation){
     return this.http.put<any>(`${ApplicationApis.Donations}/Donations/update-donation`, donation)
+  }
+  updateImage(donation : FormData, donationId : string){
+    return this.http.put<any>(`${ApplicationApis.Donations}/Donations/update-donation/image?donationId=${donationId}`, donation)
   }
 
   

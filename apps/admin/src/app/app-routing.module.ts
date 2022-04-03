@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AuthGuard } from "@crowdfunding/core";
+import { UpdateImageComponent } from "@crowdfunding/donations";
 import { ContainerComponent } from "@crowdfunding/layouts";
 import { DashboardComponent, DonationsAddDashboardComponent, DonationsListDashboardComponent } from "@crowdfunding/ui";
 
@@ -29,6 +30,10 @@ const routes : Routes = [
       {
         path:'donations/form/:id',
         component: DonationsAddDashboardComponent
+      },
+      {
+        path:'donations/update-image/:id',
+        component: UpdateImageComponent
       },
     ]
   },

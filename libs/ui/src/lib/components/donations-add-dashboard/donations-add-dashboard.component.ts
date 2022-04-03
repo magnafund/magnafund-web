@@ -5,6 +5,9 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { TokenService } from '@crowdfunding/core';
 import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
+import { MessageService } from 'primeng/api';
+import { timer } from 'rxjs';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -24,7 +27,9 @@ export class DonationsAddDashboardComponent implements OnInit {
     private donationService: DonationsService, 
     private jwtHelperService : JwtHelperService, 
     private tokenService : TokenService,
-    private activatedRoute : ActivatedRoute
+    private activatedRoute : ActivatedRoute,
+    private messageService : MessageService,
+    private location: Location,
     ) { }
     
     ngOnInit(): void {      
@@ -68,7 +73,19 @@ export class DonationsAddDashboardComponent implements OnInit {
   createDonation(){
     const donation = {userId : this.userId, ...this.form.value}
     this.donationService.postDonation(donation).subscribe((res) => {
-      console.log(res)
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Success',
+        detail: 'Fundraising successfuly created!'
+      });
+      timer(2000)
+        .toPromise()
+        .then(() => {
+          this.location.back();
+        });
+    }, (error: any) => {
+      this.messageService.add({severity:'Failed', summary:'Fundraising was not created', detail:`${error.error.messages.map((err:any)=> err)}`})
+
     })
   }
 
@@ -89,7 +106,19 @@ export class DonationsAddDashboardComponent implements OnInit {
     console.log(donation)
     console.log(this.userId)
     this.donationService.updateDonation(donation).subscribe((res:any) => {
-
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Success',
+        detail: 'Fundraising successfuly updated!'
+      });
+      timer(2000)
+        .toPromise()
+        .then(() => {
+          this.location.back();
+        });
+    }, (error: any) => {
+   
+        this.messageService.add({severity:'Failed', summary:'Fundraising was not updated', detail:`${error.error.messages.map((err:any)=> err)}`})
     })
   }
 

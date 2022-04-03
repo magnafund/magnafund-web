@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -7,11 +7,12 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthService, TokenService } from '@crowdfunding/core';
+import { AuthService, TokenService, UiLoader } from '@crowdfunding/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JWT_OPTIONS, JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 
 import { httpInterceptor } from '@crowdfunding/core';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 
 export function jwtOptionsFactory(tokenService: TokenService) {
   return {
@@ -26,6 +27,8 @@ export function jwtOptionsFactory(tokenService: TokenService) {
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
   imports: [
+    NgxUiLoaderModule.forRoot(UiLoader.load()),
+    NgxUiLoaderHttpModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -49,6 +52,8 @@ export function jwtOptionsFactory(tokenService: TokenService) {
     ConfirmationService,
     { provide: HTTP_INTERCEPTORS, useClass: httpInterceptor, multi: true }
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}

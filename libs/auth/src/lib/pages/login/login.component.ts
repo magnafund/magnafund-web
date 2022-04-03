@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
       return ;
     }
     this.uiLoader.start();
-    this.loading_spinner = true;
 
     this.authService.login(this.loginForm.value).subscribe((res:any)=> {
       if(res.success === false){

@@ -51,14 +51,16 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     DashboardComponent,
     DonationsListDashboardComponent,
     DonationsAddDashboardComponent,
-    QtaSectionComponent
+    QtaSectionComponent,
+    
   ],
   exports: [
     BannerComponent,
     DashboardComponent,
     DonationsListDashboardComponent,
     DonationsAddDashboardComponent,
-    QtaSectionComponent
+    QtaSectionComponent,
+    
   ],
   providers:[ConfirmationService]
 })

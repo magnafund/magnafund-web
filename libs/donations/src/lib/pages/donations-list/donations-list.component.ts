@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from '../../models';
 import { DonationsService } from '../../services/donations.service';
 
@@ -14,7 +14,7 @@ export class DonationsListComponent implements OnInit {
     donations: any[] = []
     category!: Category;
 
-  constructor(private donationsService: DonationsService, private activatedRoute : ActivatedRoute) { }
+  constructor(private donationsService: DonationsService, private activatedRoute : ActivatedRoute, private router : Router) { }
 
   ngOnInit(): void {
     this.donationsService.getAllCategories().subscribe((res :any) => {
@@ -58,5 +58,10 @@ export class DonationsListComponent implements OnInit {
       this.donations = res.data
     })
   }
+
+  navigateToDetailPage(id: any){
+    this.router.navigateByUrl(`donations/donation-detail/${id}`)
+  }
+
 
 }

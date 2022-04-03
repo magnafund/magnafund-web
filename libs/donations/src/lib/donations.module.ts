@@ -14,6 +14,10 @@ import { ChipModule } from 'primeng/chip';
 import { DonationDetailsComponent } from './pages/donation-details/donation-details.component';
 import { ContributeComponent } from './pages/contribute/contribute.component';
 import { InputTextModule } from 'primeng/inputtext';
+import { UpdateImageComponent } from './pages/update-image/update-image.component';
+import {ToastModule} from 'primeng/toast';
+import {FileUploadModule} from 'primeng/fileupload';
+import {HttpClientModule} from '@angular/common/http';
 
 const routes :Routes = [
   {
@@ -36,7 +40,7 @@ const routes :Routes = [
   
   },
   {
-        path: "contribute",
+    path: "contribute",
     children: [
       {
         path: ":id",
@@ -44,7 +48,9 @@ const routes :Routes = [
       }
     ]
     
-  }
+  },
+  
+   
 ]
 @NgModule({
   imports: [
@@ -60,6 +66,9 @@ const routes :Routes = [
     FormsModule,
     ReactiveFormsModule,
     InputTextModule,
+    ToastModule,
+    HttpClientModule,
+    FileUploadModule
 
   ],
   declarations: [
@@ -67,7 +76,8 @@ const routes :Routes = [
     CategoriesComponent,
     DonationsListComponent,
     DonationDetailsComponent,
-    ContributeComponent
+    ContributeComponent,
+    UpdateImageComponent
   ],
   exports: [
     TopDonationsComponent,

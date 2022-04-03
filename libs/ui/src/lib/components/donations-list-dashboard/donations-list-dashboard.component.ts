@@ -43,6 +43,9 @@ export class DonationsListDashboardComponent implements OnInit {
   updateDonation(donationId: string) {
     this.router.navigateByUrl(`donations/form/${donationId}`);
   }
+  updateImage(donationId: string) {
+    this.router.navigateByUrl(`donations/update-image/${donationId}`);
+  }
 
   getDonations(){
     

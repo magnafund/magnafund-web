@@ -1,5 +1,6 @@
 <div class="categories py-5">
-    <h2 class="text-center mb-5">Browse by category</h2>
+    <h1 class="display-5 fw-bold text-center my-5">Browse by category</h1>
+
     <div class="flex align-items-center justify-content-center">
         <p-chip (click)="navigateToCategory(category.id)" *ngFor="let category of categories" [label]="category.categoryName" styleClass="mr-3"></p-chip>
     <div>

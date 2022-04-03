@@ -45,10 +45,16 @@
                   pTooltip="Close" tooltipPosition="top"
                 ></p-button>
                 <p-button
-                  styleClass="p-button-success"
+                  styleClass="p-button-success mr-2"
                   icon="pi pi-pencil"
                   pTooltip="Edit" tooltipPosition="top"
                   (click)="updateDonation(donation.id)"
+                ></p-button>
+                <p-button
+                  styleClass="p-button-success mr-2"
+                  icon="pi pi-image"
+                  pTooltip="Update Image" tooltipPosition="top"
+                  (click)="updateImage(donation.id)"
                 ></p-button>
               </td>
             </tr>
