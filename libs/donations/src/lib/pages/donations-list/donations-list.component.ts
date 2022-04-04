@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as moment from 'moment';
 import { Category } from '../../models';
 import { DonationsService } from '../../services/donations.service';
 
@@ -48,7 +49,15 @@ export class DonationsListComponent implements OnInit {
 
   getAllFundraisings(){
     this.donationsService.getAllDonations().subscribe((res: any) => {
-      this.donations = res.data
+      this.donations = res.data.map((donation: any) => {
+        console.log(moment(donation?.endDate).format('DD-MM-YYYY HH:mm'))
+        donation.endDate = moment(donation?.endDate).format('DD-MM-YYYY HH:mm')
+        return {
+          ...donation, dateCreated: moment(donation?.dateCreated).format('DD-MM-YYYY HH:mm').split(" ")[0], 
+          datePosted : moment(donation?.dateCreated).startOf('day').fromNow(),
+          progress : ((donation?.amountRaised  / donation.amountGoal) * 100).toFixed(0)
+        }
+      })
     })
   }
   getFundraisingsByCategory(){

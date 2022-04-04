@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Category, Donation, DonationsService } from '@crowdfunding/donations';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { TokenService } from '@crowdfunding/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { MessageService } from 'primeng/api';
 import { timer } from 'rxjs';
@@ -30,11 +30,13 @@ export class DonationsAddDashboardComponent implements OnInit {
     private activatedRoute : ActivatedRoute,
     private messageService : MessageService,
     private location: Location,
+    private router : Router
     ) { }
     
     ngOnInit(): void {      
       const token : any = this.tokenService.getToken()
       this.userId = parseInt(this.jwtHelperService.decodeToken(token).UserId)
+      console.log(this.userId)
       
       this.initialiseForm();
     this.checkEdit()
@@ -52,6 +54,7 @@ export class DonationsAddDashboardComponent implements OnInit {
         this.donationsForm['amountGoal'].setValue(this.currentDonation.amountGoal)
         this.donationsForm['endDate'].setValue(this.currentDonation.endDate)
         this.donationsForm['description'].setValue(this.currentDonation.description)
+        this.donationsForm['shortDescription'].setValue(this.currentDonation.shortDescription)
         this.donationsForm['categoryId'].setValue(this.currentDonation?.categoryId)
       })
       
@@ -66,12 +69,12 @@ export class DonationsAddDashboardComponent implements OnInit {
       endDate: ['', Validators.required],
       categoryId: ['', Validators.required],
       shortDescription: ['', Validators.required],
-      userId: [0]
     })
   }
 
   createDonation(){
-    const donation = {userId : this.userId, ...this.form.value}
+    const donation = { ...this.form.value}
+    donation.userId = parseInt(this.jwtHelperService.decodeToken(this.tokenService.getToken()).UserId);
     this.donationService.postDonation(donation).subscribe((res) => {
       this.messageService.add({
         severity: 'success',
@@ -100,6 +103,8 @@ export class DonationsAddDashboardComponent implements OnInit {
   }
 
   editDonation(){
+    const token : any = this.tokenService.getToken()
+      this.userId = parseInt(this.jwtHelperService.decodeToken(token).UserId)
     const donation = {...this.form.value}
     donation.userId = this.userId;
     donation.id = this.activatedRoute.snapshot.params['id'];
@@ -114,7 +119,8 @@ export class DonationsAddDashboardComponent implements OnInit {
       timer(2000)
         .toPromise()
         .then(() => {
-          this.location.back();
+          // this.location.back();
+          this.router.navigateByUrl('/donations')
         });
     }, (error: any) => {
    
@@ -123,9 +129,11 @@ export class DonationsAddDashboardComponent implements OnInit {
   }
 
   onSubmit(){
-    if(this.editmode)
-      this.editDonation()
-    this.createDonation()
+    this.editmode ?  this.editDonation() :  this.createDonation()
+  }
+
+  onCancel(){
+    this.location.back();
   }
 
 }

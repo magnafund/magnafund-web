@@ -6,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
   basicData! : any;
-  constructor() { }
+  constructor() {
+  // window.location.reload()
+
+   }
 
   ngOnInit(): void {
     this.basicData = {

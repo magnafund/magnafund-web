@@ -9,7 +9,7 @@ export class TokenService {
     localStorage.setItem('cf_token', token);
   }
 
-  public getToken(): string | null {
+  public getToken(): any {
     return localStorage.getItem('cf_token');
   }
 
