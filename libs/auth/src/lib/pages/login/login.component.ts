@@ -33,19 +33,17 @@ export class LoginComponent implements OnInit {
       this.messageService.add({severity:'error', summary:'Error', detail:'Fill in all fields correctly'})
       return ;
     }
-    this.uiLoader.start();
-    this.loading_spinner = true;
+   this.uiLoader.start()
 
     this.authService.login(this.loginForm.value).subscribe((res:any)=> {
-      if(res.success === false){
-        this.uiLoader.stop();
-        this.messageService.add({severity:'error', summary:'Error', detail:`${res.messages[0]}`})
-      }
-    this.messageService.add({severity:'success', summary:'Success', detail:'Login successful'})
-    this.router.navigateByUrl('/');
-    this.tokenService.setToken(res?.data?.token)
+      this.uiLoader.stop()
+      
+      this.messageService.add({severity:'success', summary:'Success', detail:'Login successful'})
+      this.router.navigateByUrl('/');
+      this.tokenService.setToken(res?.data?.token)
     }, (error: any) => {
-      this.uiLoader.stop();
+      this.uiLoader.stop()
+      
       this.messageService.add({severity:'error', summary:'Login failed', detail:`${error.error.messages.map((err:any)=> err)}`})
     })
   }

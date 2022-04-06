@@ -1,0 +1,89 @@
+<!-- <div class="donations-list px-4 row">
+    <div class="col-md-2 mt-5" *ngIf="!isCategoryPage">    
+        <h6>Filter By Category</h6>
+            <div class="p-field-checkbox" *ngFor="let category of categories" class="m-3">
+                <p-checkbox [(ngModel)]="category.checked" [binary]="true"  (onChange)="categoryFilter()"></p-checkbox>
+                <label for="{{ category.id }}"> {{ category.categoryName }}</label>
+              </div>
+    </div>
+    <div [ngClass]="{'col-md-10': !isCategoryPage, 'col-12': isCategoryPage}">
+        <h1 *ngIf="!isCategoryPage" class="display-4 text-center my-5 p-5">All fundraisings</h1>
+        <h1 *ngIf="isCategoryPage" class="display-4 text-center my-5 p-5">Browsing fundraisings by category <strong *ngIf="category"> <em>"{{category?.categoryName}}"</em></strong></h1>
+
+        <div class="top-donations row" *ngIf="donations">
+            <div *ngFor="let donation of donations" class="col-sm-12 col-md-6 col-lg-4">
+    
+                <p-card  [header]="donation?.title"  [subheader]="donation.datePosted" [style]="{width: '100%'}" styleClass="p-card-shadow mt-2">
+                    <ng-template pTemplate="header">
+                        <img alt="Card" src="assets/banner-bg.jpg">
+                    </ng-template>
+                    <div [innerHTML]="donation.shortDescription"></div>
+                    <div>
+                        <p-progressBar [value]="donation.progress"></p-progressBar>
+                        <div class="p-2 m2-3">
+                            Raised <strong>{{donation.amountRaised | currency : 'ZWL '}}</strong> of <strong style="color: green;">{{donation.amountGoal | currency : 'ZWL '}}</strong>
+        
+                        </div>
+        
+                    </div>
+                   
+                </p-card>
+            </div>
+        </div>
+        
+    </div>
+</div> -->
+
+<div class="album py-5 bg-light">
+    <div class="container">
+        <h1 class="display-5 fw-bold text-center my-5">All fundraising</h1>
+        <p *ngIf="isCategoryPage" class="lead text-center my-5 p-5">Browsing fundraisings by category <strong *ngIf="category"> <em>"{{category?.categoryName}}"</em></strong></p>
+
+        <div class="row">
+            <div class="col-12 mt-5" *ngIf="!isCategoryPage">    
+                <h6 class="lead text-center">Filter By Category</h6>
+                <div class="category-filter">
+                <div class="p-field-checkbox " *ngFor="let category of categories" class="m-3">
+                    <label for="{{ category.id }}"> {{ category.categoryName }}
+                        <p-checkbox [(ngModel)]="category.checked" [binary]="true"  (onChange)="categoryFilter()"></p-checkbox>
+                    </label>
+                </div>
+                </div>
+            </div>            
+        </div>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 justify-content-center">
+            <div class="col-md-4 donation" *ngFor="let donation of donations" style="width: 350px;">
+                <div class="card shadow-sm">
+                    <img [src]="donation?.imageUrl" alt="">
+                    <!-- <div class="image-placeholder">           </div> -->
+                    <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{donation?.title}}</h5>
+                        <p class="card-text">{{donation?.shortDescription}}</p>
+                        
+
+                        
+                    </div>
+                    <div class="py-2 m-2">
+                        <p-progressBar [value]="donation.progress"></p-progressBar>
+                        <small> Raised <strong>{{donation.amountRaised | currency : 'ZWL '}}</strong> of <strong
+                                style="color: green;">{{donation.amountGoal | currency : 'ZWL '}}</strong>
+                        </small>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center m-2">
+                        <div class="btn-group">
+                            <button (click)="navigateToDetailPage(donation.id)" type="button"
+                                class="btn btn-sm btn-outline-secondary">View</button>
+                            <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+                        </div>
+                        <small class="text-muted"><strong>Posted </strong>{{donation?.datePosted}}</small>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

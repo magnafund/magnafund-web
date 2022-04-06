@@ -4,9 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {ApplicationApis} from '@env/environment'
 import { Beneficiary } from '../models';
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 
 
 
