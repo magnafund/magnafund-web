@@ -1,105 +1,61 @@
+# Magnafund
+
+![](apps/admin/src/assets/logo.png)
+
+# Description 
+MagnaFund is a crowdfunding platform built with angular for the monorepo that consists of the web application for people who want to donate and the web portal, Flutter for the mobile app and ASP .NET Core for the APIs with the angular apps hosted on firebase. 
+
+The platform  allows people to make donations and receive funds using Zimbabwe payment methods. 
 
 
-# Crowdfunding
+# Project setup 
 
-This project was generated using [Nx](https://nx.dev).
+1. Clone the project to your local repo
+- to do this you can open your terminal and then run the following command 
+```
+$ git clone https://github.com/crowdfundingzim/crowdfunding-web.git
+```
+this clones the repo
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+2. ```cd``` into the newly created folder and type
+``` $ npm install```
+This installs the required dependencies
 
-🔎 **Smart, Fast and Extensible Build System**
+3. To run the project run 
+ ```$ nx serve admin```
+This will open up the admin portal (which users who want to post donations have to open and login) in your browser on a port that it specifies in the console.
 
-## Quick Start & Documentation
 
-[Nx Documentation](https://nx.dev/angular)
+To open up the front web every user sees run the following command
+ ```$ nx serve front-web```
+This will open up the front portal in your browser on a port that it specifies in the console.
 
-[10-minute video showing all Nx features](https://nx.dev/getting-started/intro)
 
-[Interactive Tutorial](https://nx.dev/tutorial/01-create-application)
 
-## Adding capabilities to your workspace
+# How to use it
+To use the web app live users can visit [https://crowdfunding-zim.web.app/ ](https://crowdfunding-zim.web.app/)
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+For the admin portal visit [https://crowdfundingzim-backend.web.app/auth/login  ](https://crowdfundingzim-backend.web.app/auth/login/)
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+# About the project 
+The project was created using the following technologies
 
-Below are our core plugins:
+## Angular 
+Frontend was built using reactjs
 
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
+## APIs
+The app runs on ASP.NET core APIs
 
-There are also many [community plugins](https://nx.dev/community) you could add.
+## Flutter
+There is a mobile version developed with flutter
 
-## Generate an application
 
-Run `ng g @nrwl/angular:app my-app` to generate an application.
+## Firebase
+The app is hosted on Firebase
 
-> You can use any of the plugins above to generate applications as well.
-
-When using Nx, you can create multiple applications and libraries in the same workspace.
-
-## Generate a library
-
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are shareable across libraries and applications. They can be imported from `@crowdfunding/mylib`.
-
-## Development server
-
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng g component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
+## CSS
+All styling was done using CSS
 
 
 
 
-
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
