@@ -1,5 +1,6 @@
 <div class="donation-details" *ngIf="donation">
-    <div class="container">
+    <div class="container" style="max-width: 700px;">
+        <img [src]="donation?.imageUrl" class="mx-auto" style="display: inline-block; text-align: center;" />
         <h1 class="display-4 my-5">{{donation.title}}</h1>
         <div class="d-flex justify-content-between">
             <p>Posted <strong>{{donation.datePosted}}</strong> </p>
@@ -28,11 +29,9 @@
 
                 <p>{{donation.shortDescription}}</p>
 
-            <div [innerHTML]="donation.description">
+                <p>{{donation.description}}</p>
 
-            </div>
-
-            <p-button label="Make a contribution" (click)="contribute()"></p-button>
+            <p-button class="my-5" label="Make a contribution" (click)="contribute()"></p-button>
     
             </div>
 
