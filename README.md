@@ -41,13 +41,13 @@ For the admin portal visit [https://crowdfundingzim-backend.web.app/auth/login  
 The project was created using the following technologies
 
 ## Angular 
-Frontend was built using reactjs
+Frontend was built using Angular
 
 ## APIs
 The app runs on ASP.NET core APIs
 
 ## Flutter
-There is a mobile version developed with flutter
+There is a mobile version developed with Flutter
 
 
 ## Firebase
