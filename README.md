@@ -22,12 +22,12 @@ this clones the repo
 This installs the required dependencies
 
 3. To run the project run 
- ```$ nx serve admin```
+ ```$ nx serve admin``` or  ```$ ng serve admin```
 This will open up the admin portal (which users who want to post donations have to open and login) in your browser on a port that it specifies in the console.
 
 
 To open up the front web every user sees run the following command
- ```$ nx serve front-web```
+ ```$ nx serve front-web``` or  ```$ ng serve front-web```
 This will open up the front portal in your browser on a port that it specifies in the console.
 
 
