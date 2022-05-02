@@ -31,8 +31,13 @@ header{
 }
 .navbar .navbar-nav .nav-item{
     margin: 0 10px;
+    cursor: pointer;
 }
 
 .active{
     border-bottom: 2px solid var(--primary-red);
+}
+
+.btn{
+    
 }
