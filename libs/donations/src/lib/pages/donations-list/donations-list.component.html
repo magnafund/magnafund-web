@@ -53,6 +53,7 @@
         </div>
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 justify-content-center">
+            <p class="lead" *ngIf="donations.length == 0"><strong> No Fundraisings found...</strong></p>
             <div class="col-md-4 donation" *ngFor="let donation of donations" style="width: 350px;">
                 <div class="card shadow-sm">
                     <img [src]="donation?.imageUrl" alt="">
