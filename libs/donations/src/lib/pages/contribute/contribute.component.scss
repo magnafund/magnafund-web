@@ -1,3 +1,9 @@
+
+.contribute-container{
+  min-height: 100vh;
+  display: flex;
+  background-color: #f9f9f9;
+}
 .contribute{
     min-height: 100vh;
     flex-basis: 45%;
@@ -29,8 +35,19 @@ p-card{
     max-width: 400px;
 }
 
-.contribute-container{
-  min-height: 100vh;
-  display: flex;
-  background-color: #f9f9f9;
+@media (max-width: 900px) {
+  .contribute-container{
+    flex-direction: column;
+  }
+  .left-text{
+    min-height: 30vh;
+    width: 100vw;
+  }
+  .contribute{
+    min-height: 65vh;
+    width: 100vw;
+}
+blockquote{
+  width: 80%;
+}
 }
