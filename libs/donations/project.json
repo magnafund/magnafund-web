@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/donations",
+  "sourceRoot": "libs/donations/src",
+  "prefix": "crowdfunding",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/donations"],
+      "options": {
+        "jestConfig": "libs/donations/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/donations/src/**/*.ts",
+          "libs/donations/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

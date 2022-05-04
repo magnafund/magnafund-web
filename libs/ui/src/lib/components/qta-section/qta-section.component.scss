@@ -1,0 +1,16 @@
+.quote{
+    min-height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f9f9f9;
+
+
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.81) 0%, rgba(0, 0, 0, 0.81) 100%), url('/assets/banner-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #f9f9f9;
+}

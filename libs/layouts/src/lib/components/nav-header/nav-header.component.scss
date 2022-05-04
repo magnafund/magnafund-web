@@ -1,0 +1,43 @@
+// .nav-header {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+
+//     ul{
+//            list-style: none;
+//            li {
+//             display: inline;
+//             margin-right: 20px;
+//             color: #666;
+
+//             &:hover{
+//                 cursor: pointer;
+//             }
+//            }
+//     }
+
+//     .logo{
+//         max-height: 50px;
+//     }
+
+// }
+
+
+header{
+    background-color: #fff!important;
+}
+.navbar .navbar-nav{
+    margin-left: auto;
+}
+.navbar .navbar-nav .nav-item{
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.active{
+    border-bottom: 2px solid var(--primary-red);
+}
+
+.btn{
+    
+}
